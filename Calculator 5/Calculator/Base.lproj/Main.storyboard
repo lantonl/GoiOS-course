@@ -138,7 +138,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="result" destination="DPr-Kg-6Px" id="7Kw-w8-4i3"/>
+                        <outlet property="result" destination="DPr-Kg-6Px" id="kDa-DZ-tKQ"/>
+                        <outlet property="resultLabel" destination="8bC-Xf-vdC" id="N8h-gG-x4C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

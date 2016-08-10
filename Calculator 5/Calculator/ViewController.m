@@ -11,6 +11,7 @@
 
 
 @interface ViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *result;
 @property (assign, nonatomic) BOOL didUserStartTyping;
 @property (strong, nonatomic) CalculatorBrain *model;
