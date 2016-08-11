@@ -124,7 +124,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zAM-ag-7Qi">
                                 <rect key="frame" x="138" y="173" width="46" height="30"/>
-                                <state key="normal" title="="/>
+                                <state key="normal" title="⏎"/>
                                 <connections>
                                     <action selector="touchReturn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nXc-MR-ibX"/>
                                 </connections>
@@ -138,8 +138,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="result" destination="DPr-Kg-6Px" id="kDa-DZ-tKQ"/>
-                        <outlet property="resultLabel" destination="8bC-Xf-vdC" id="N8h-gG-x4C"/>
+                        <outlet property="result" destination="DPr-Kg-6Px" id="7Kw-w8-4i3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

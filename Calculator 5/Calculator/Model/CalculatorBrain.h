@@ -14,7 +14,8 @@ typedef enum : NSUInteger {
     CalcOperationSub,
     CalcOperationMul,
     CalcOperationDiv,
-    CalcOperationSqrt
+    CalcOperationSqrt,
+    CalcOperationEqual,
 } CalcOperation;
 
 @interface NSString (CalcOperation)
@@ -25,6 +26,4 @@ typedef enum : NSUInteger {
 - (void) addDigit:(float)digit;
 - (float) executeOperation:(CalcOperation)operation;
 - (float) executeOperation:(CalcOperation)operation withDigit:(float) digit;
-- (NSUInteger) returnOperator;
-
 @end

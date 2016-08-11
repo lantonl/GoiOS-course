@@ -21,6 +21,8 @@
         return CalcOperationDiv;
     } else if ([self isEqualToString:@"√"]){
         return CalcOperationSqrt;
+    } else if ([self isEqualToString:@"="]){
+        return CalcOperationEqual;
     }
     return CalcOperationNone;
 }
@@ -50,14 +52,19 @@
 
 - (void) addDigit:(float)digit {
     [self.digits addObject:@(digit)];
+    NSLog(@"Digits: %@", self.digits);
 }
 
-- (float) executeOperation:(CalcOperation)operation withDigit:(float) digit {
-    [self addDigit:digit];
+- (float) executeOperation:(CalcOperation)operation withDigit:(float) digit{
+    float result = digit;
+    [self addDigit: digit];
     self.operator = operation;
-    return digit;
+    if (self.operator && self.digits.count >= 2) {
+        result = [self executeOperation: self.operator];
+        [self addDigit: result];
     }
-
+    return result;
+}
 
 
 - (float) executeOperation:(CalcOperation)operation {
@@ -111,10 +118,6 @@
     }
     
     return 0;
-}
-
-- (NSUInteger) returnOperator {
-    return self.operator;
 }
 
 #pragma mark -
