@@ -52,7 +52,7 @@
 
 - (void) addDigit:(float)digit {
     [self.digits addObject:@(digit)];
-    NSLog(@"Digits: %@", self.digits);
+   // NSLog(@"Digits: %@", self.digits);
 }
 
 - (float) executeOperation:(CalcOperation)operation withDigit:(float) digit{

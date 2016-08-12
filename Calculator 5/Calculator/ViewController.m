@@ -53,6 +53,7 @@
 - (IBAction)touchClearButton:(UIButton *)sender {
     [self.model cleanMemory];
     self.result.text = @"0";
+    self.didUserStartTyping = NO;
 }
 
 
