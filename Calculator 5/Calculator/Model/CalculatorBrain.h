@@ -26,4 +26,5 @@ typedef enum : NSUInteger {
 - (void) addDigit:(float)digit;
 - (float) executeOperation:(CalcOperation)operation;
 - (float) executeOperation:(CalcOperation)operation withDigit:(float) digit;
+- (void) cleanMemory;
 @end

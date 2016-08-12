@@ -21,9 +21,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.model = [[CalculatorBrain alloc] init];
-    UIButton *sqrtButton = [[UIButton alloc] initWithFrame:CGRectMake(230, 180, 50, 50)];
+    UIButton *sqrtButton = [[UIButton alloc] initWithFrame:CGRectMake(230, 160, 50, 50)];
     [sqrtButton setTitle:@"√" forState:UIControlStateNormal];
-    [sqrtButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [sqrtButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [self.view addSubview:sqrtButton];
     [sqrtButton addTarget:self action:@selector(touchOperator:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -50,15 +50,11 @@
     self.didUserStartTyping = NO;
 }
 
-- (IBAction)touchReturn:(id)sender {
-        NSString *operator = [sender currentTitle];
-         float digit = self.result.text.floatValue;
-         float result = [self.model executeOperation:[operator operation] withDigit:digit];
-        [self.model addDigit:result];
-        self.result.text = [NSString stringWithFormat:@"%f", result];
-        self.didUserStartTyping = NO;
-    
+- (IBAction)touchClearButton:(UIButton *)sender {
+    [self.model cleanMemory];
+    self.result.text = @"0";
 }
+
 
 
 @end

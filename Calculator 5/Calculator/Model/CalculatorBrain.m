@@ -56,16 +56,36 @@
 }
 
 - (float) executeOperation:(CalcOperation)operation withDigit:(float) digit{
-    float result = digit;
-    [self addDigit: digit];
-    self.operator = operation;
+        [self addDigit: digit];
+         float result = digit;
+        
     if (self.operator && self.digits.count >= 2) {
         result = [self executeOperation: self.operator];
-        [self addDigit: result];
     }
+    
+    if (operation != CalcOperationEqual) {
+        self.operator = operation;
+        if (result)
+            [self addDigit:result];
+    } else {
+        //[self.digits removeLastObject];
+        self.operator = CalcOperationNone;
+    }
+    if (operation == CalcOperationSqrt) {
+      result = [self executeOperation:operation];
+        self.operator = CalcOperationNone;
+    }
+
     return result;
 }
 
+- (void) cleanMemory {
+    [self.digits removeLastObject];
+    self.operator = CalcOperationNone;
+}
+
+
+#pragma mark - Private Interface
 
 - (float) executeOperation:(CalcOperation)operation {
     switch (operation) {
