@@ -12,7 +12,9 @@
 @interface ToDoItemsListViewController() <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *summaryTextField;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextFIeld;
-@property (weak, nonatomic) IBOutlet UITextField *priorityTextField;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControlPrioritySelection;
+@property (weak, nonatomic) IBOutlet UILabel *selectedSegmentText;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) id<ToDoItemsStoreProtocol> store;
@@ -22,6 +24,7 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
+    [self updateText: _segmentedControlPrioritySelection.selectedSegmentIndex];
     self.store = [[ToDoItemsStore alloc] init];
     [self addItemWithTitle:@"Buy new iPhone" andSummary:@"When iPhone 8 will be available." andPriority:@"Low"];
     [self addItemWithTitle:@"Sell my Galaxy S7" andSummary:@"Because iPhone is cool!" andPriority:@"Urgent"];
@@ -85,7 +88,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 - (IBAction)didTouchAddButton:(id)sender {
     NSString *title = self.titleTextFIeld.text;
     NSString *summary = self.summaryTextField.text;
-    NSString *priority = self.priorityTextField.text;
+    NSString *priority = self.selectedSegmentText.text;
     [self addItemWithTitle:title andSummary:summary andPriority:priority];
     
     NSUInteger newElementIndex = [self.store itemsCount] - 1;
@@ -93,9 +96,36 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
     self.titleTextFIeld.text = nil;
     self.summaryTextField.text = nil;
-    self.priorityTextField.text = nil;
+    //self.selectedSegmentText = 0;
     
     [self.view endEditing:YES];
+}
+
+- (IBAction)didSelectSegment:(id)sender{
+    [self updateText:[sender selectedSegmentIndex]];
+}
+- (void)updateText:(NSInteger)selIndex{
+    switch (selIndex) {
+        case 0:
+            _selectedSegmentText.text = @"Low";
+            _selectedSegmentText.textColor = [UIColor blueColor];
+            break;
+        case 1:
+            _selectedSegmentText.text = @"Default";
+            _selectedSegmentText.textColor = [UIColor greenColor];
+            break;
+        case 2:
+            _selectedSegmentText.text = @"High";
+            _selectedSegmentText.textColor = [UIColor orangeColor   ];
+            break;
+        case 3:
+            _selectedSegmentText.text = @"Urgent";
+            _selectedSegmentText.textColor = [UIColor redColor];
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

@@ -18,20 +18,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tQf-L8-uyY">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tQf-L8-uyY">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="Pat-gA-tMm">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="74"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFU-YZ-QPf">
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFU-YZ-QPf">
                                             <rect key="frame" x="560" y="7" width="30" height="30"/>
-                                            <color key="backgroundColor" red="0.0" green="0.50196078430000002" blue="0.98823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="YMF-Zq-pUf"/>
                                                 <constraint firstAttribute="height" constant="30" id="gid-Di-2us"/>
                                             </constraints>
+                                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <state key="normal" title="+">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -49,13 +50,27 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="HsH-E3-co0">
+                                            <rect key="frame" x="8" y="39" width="320" height="29"/>
+                                            <segments>
+                                                <segment title="Low"/>
+                                                <segment title="Default"/>
+                                                <segment title="High"/>
+                                                <segment title="Urgent"/>
+                                            </segments>
+                                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="didSelectSegment:" destination="BYZ-38-t0r" eventType="valueChanged" id="ctH-ON-T69"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Default" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vN-mW-RH2">
+                                            <rect key="frame" x="268" y="8" width="60" height="26"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Summary" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LMK-Yk-8BT">
-                                            <rect key="frame" x="127" y="6" width="92" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Priority" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2XH-wp-sJg">
-                                            <rect key="frame" x="235" y="6" width="68" height="30"/>
+                                            <rect key="frame" x="116" y="7" width="152" height="30"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
@@ -87,7 +102,8 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="priorityTextField" destination="2XH-wp-sJg" id="eOn-Yk-V7R"/>
+                        <outlet property="segmentedControlPrioritySelection" destination="HsH-E3-co0" id="f7b-ec-dli"/>
+                        <outlet property="selectedSegmentText" destination="7vN-mW-RH2" id="kHk-Th-hmg"/>
                         <outlet property="summaryTextField" destination="LMK-Yk-8BT" id="KPt-xW-JAf"/>
                         <outlet property="tableView" destination="tQf-L8-uyY" id="jIR-7n-QTQ"/>
                         <outlet property="titleTextFIeld" destination="dBU-RB-v2m" id="Tgm-Ae-lu7"/>
@@ -95,7 +111,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74" y="35"/>
+            <point key="canvasLocation" x="-86" y="-1"/>
         </scene>
     </scenes>
 </document>
