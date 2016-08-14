@@ -15,13 +15,13 @@
 @implementation NSString (PrioritySet)
 
 - (PrioritySet) priority {
-    if ([self isEqualToString:@"Low"]) {
+    if ([self isEqualToString:@"Low"] || [self isEqualToString:@"low"]) {
         return PrioritySetLow;
-    } else if ([self isEqualToString:@"Default"]){
+    } else if ([self isEqualToString:@"Default"] || [self isEqualToString:@"default"]){
         return PrioritySetDefault;
-    } else if ([self isEqualToString:@"High"]){
+    } else if ([self isEqualToString:@"High"] || [self isEqualToString:@"high"]){
         return PrioritySetHigh;
-    } else if ([self isEqualToString:@"Urgent"]){
+    } else if ([self isEqualToString:@"Urgent"] || [self isEqualToString:@"urgent"]){
         return PrioritySetUrgent;
     }
     return PrioritySetNone;

@@ -93,6 +93,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
     self.titleTextFIeld.text = nil;
     self.summaryTextField.text = nil;
+    self.priorityTextField.text = nil;
     
     [self.view endEditing:YES];
 }
