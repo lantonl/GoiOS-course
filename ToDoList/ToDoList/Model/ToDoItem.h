@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+
+
 @interface ToDoItem : NSObject
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *summary;
+@property (nonatomic, strong) NSString *priority;
 @property (assign) BOOL isDone;
 @end

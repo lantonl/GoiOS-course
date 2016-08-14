@@ -12,6 +12,8 @@
 @interface ToDoItemsListViewController() <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *summaryTextField;
 @property (weak, nonatomic) IBOutlet UITextField *titleTextFIeld;
+@property (weak, nonatomic) IBOutlet UITextField *priorityTextField;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) id<ToDoItemsStoreProtocol> store;
 @end
@@ -21,8 +23,10 @@
 - (void) viewDidLoad {
     [super viewDidLoad];
     self.store = [[ToDoItemsStore alloc] init];
-    [self addItemWithTitle:@"Buy new iPhone" andSummary:@"When iPhone 8 will be available."];
-    [self addItemWithTitle:@"Sell my Galaxy S7" andSummary:@"Because iPhone is cool!"];
+    [self addItemWithTitle:@"Buy new iPhone" andSummary:@"When iPhone 8 will be available." andPriority:@"Low"];
+    [self addItemWithTitle:@"Sell my Galaxy S7" andSummary:@"Because iPhone is cool!" andPriority:@"Urgent"];
+    [self addItemWithTitle:@"Sell my Galaxy S7" andSummary:@"Because iPhone is cool!" andPriority:@"Default"];
+    [self addItemWithTitle:@"Sell my Galaxy S7" andSummary:@"Because iPhone is cool!" andPriority:@"High"];
 }
 
 #pragma mark - UITableViewDelegate
@@ -46,25 +50,43 @@
     }
     ToDoItem *item = [[self.store items] objectAtIndex:indexPath.row];
     cell.textLabel.text = item.title;
+    cell.textLabel.textColor = [self.store priorityColorSetter:[item.priority priority]];
     cell.detailTextLabel.text = item.summary;
     cell.accessoryType = item.isDone ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
-    
+  
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.store removeItem: indexPath.row];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                         withRowAnimation:UITableViewRowAnimationRight];
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+    }
+
 #pragma mark - Actions
 
-- (void) addItemWithTitle:(NSString *)title andSummary:(NSString *)summary {
+- (void) addItemWithTitle:(NSString *)title andSummary:(NSString *)summary andPriority:(NSString*)priority{
     ToDoItem *item = [[ToDoItem alloc] init];
     item.title = title;
     item.summary = summary;
+    item.priority = priority;
     [self.store addItem:item];
 };
 
 - (IBAction)didTouchAddButton:(id)sender {
     NSString *title = self.titleTextFIeld.text;
     NSString *summary = self.summaryTextField.text;
-    [self addItemWithTitle:title andSummary:summary];
+    NSString *priority = self.priorityTextField.text;
+    [self addItemWithTitle:title andSummary:summary andPriority:priority];
     
     NSUInteger newElementIndex = [self.store itemsCount] - 1;
     [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:newElementIndex inSection:0]] withRowAnimation:UITableViewRowAnimationAutomatic];
