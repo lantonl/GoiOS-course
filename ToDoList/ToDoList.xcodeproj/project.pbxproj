@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		163D38111D63930500C582B2 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 163D38101D63930500C582B2 /* CustomCell.m */; };
+		163D38161D64C10500C582B2 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = 163D38151D64C10500C582B2 /* Button.m */; };
 		418FAB351D5B908600E0F8A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 418FAB341D5B908600E0F8A7 /* main.m */; };
 		418FAB381D5B908600E0F8A7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 418FAB371D5B908600E0F8A7 /* AppDelegate.m */; };
 		418FAB3B1D5B908600E0F8A7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 418FAB3A1D5B908600E0F8A7 /* ViewController.m */; };
@@ -30,6 +32,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		163D380F1D63930500C582B2 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCell.h; path = cells/CustomCell.h; sourceTree = "<group>"; };
+		163D38101D63930500C582B2 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCell.m; path = cells/CustomCell.m; sourceTree = "<group>"; };
+		163D38141D64C10500C582B2 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Button.h; sourceTree = "<group>"; };
+		163D38151D64C10500C582B2 /* Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Button.m; sourceTree = "<group>"; };
 		418FAB301D5B908600E0F8A7 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		418FAB341D5B908600E0F8A7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		418FAB361D5B908600E0F8A7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,6 +75,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		163D380E1D6391EC00C582B2 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				163D380F1D63930500C582B2 /* CustomCell.h */,
+				163D38101D63930500C582B2 /* CustomCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		163D38121D64C0A600C582B2 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				163D38171D66292B00C582B2 /* Assets */,
+				418FAB5F1D5B981600E0F8A7 /* ViewControllers */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		163D38131D64C0CD00C582B2 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				163D38141D64C10500C582B2 /* Button.h */,
+				163D38151D64C10500C582B2 /* Button.m */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		163D38171D66292B00C582B2 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
 		418FAB271D5B908600E0F8A7 = {
 			isa = PBXGroup;
 			children = (
@@ -90,7 +130,7 @@
 		418FAB321D5B908600E0F8A7 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
-				418FAB5F1D5B981600E0F8A7 /* ViewControllers */,
+				163D38121D64C0A600C582B2 /* New Group */,
 				418FAB581D5B90EC00E0F8A7 /* Model */,
 				418FAB361D5B908600E0F8A7 /* AppDelegate.h */,
 				418FAB371D5B908600E0F8A7 /* AppDelegate.m */,
@@ -136,6 +176,8 @@
 		418FAB5F1D5B981600E0F8A7 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				163D38131D64C0CD00C582B2 /* Buttons */,
+				163D380E1D6391EC00C582B2 /* Cells */,
 				418FAB601D5B984100E0F8A7 /* ToDoItemsListViewController.h */,
 				418FAB611D5B984100E0F8A7 /* ToDoItemsListViewController.m */,
 			);
@@ -246,8 +288,10 @@
 				418FAB381D5B908600E0F8A7 /* AppDelegate.m in Sources */,
 				418FAB5B1D5B911400E0F8A7 /* ToDoItem.m in Sources */,
 				418FAB5E1D5B925500E0F8A7 /* ToDoItemsStore.m in Sources */,
+				163D38111D63930500C582B2 /* CustomCell.m in Sources */,
 				418FAB351D5B908600E0F8A7 /* main.m in Sources */,
 				418FAB621D5B984100E0F8A7 /* ToDoItemsListViewController.m in Sources */,
+				163D38161D64C10500C582B2 /* Button.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

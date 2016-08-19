@@ -7,12 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-
+typedef enum : NSUInteger {
+    PrioritySetNone,
+    PrioritySetLow,
+    PrioritySetDefault,
+    PrioritySetHigh,
+    PrioritySetUrgent,
+} PrioritySet;
 
 @interface ToDoItem : NSObject
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *summary;
-@property (nonatomic, strong) NSString *priority;
+@property (nonatomic, assign) NSUInteger priority;
 @property (assign) BOOL isDone;
+
+- (UIColor*) priorityColorSetter:(PrioritySet)priority;
+- (void) priorityChangeValue;
 @end
