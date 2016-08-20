@@ -116,14 +116,15 @@ static NSString *kDynamicCellIdentifier = @"DynamicCell";
     NSString *title     = self.titleTextFIeld.text;
     NSString *summary   = self.summaryTextField.text;
     NSUInteger priority = _segmentedControlPrioritySelection.selectedSegmentIndex +1;
-    [self addItemWithTitle:title andSummary:summary andPriority:priority];
+    [self addItemWithTitle:title
+                andSummary:summary
+               andPriority:priority];
     
     NSUInteger newElementIndex = [self.store itemsCount] - 1;
     [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:newElementIndex inSection:0]]
                           withRowAnimation:UITableViewRowAnimationAutomatic];
-    self.titleTextFIeld.text = nil;
+    self.titleTextFIeld.text   = nil;
     self.summaryTextField.text = nil;
-    //self.selectedSegmentText = 0;
     [self.view endEditing:YES];
 
 }
@@ -179,11 +180,12 @@ static NSString *kDynamicCellIdentifier = @"DynamicCell";
 
 - (void)didTapPriorityButton:(CustomCell *)cell {
     NSIndexPath *indexPath    = [self.tableView indexPathForCell:cell];
-    NSUInteger index = (NSUInteger)indexPath.row;
-    ToDoItem* item = [self.store getObjecAtIndex:index];
+    NSUInteger index          = (NSUInteger)indexPath.row;
+    ToDoItem* item            = [self.store getObjecAtIndex:index];
     [item priorityChangeValue];
     [self.tableView reloadRowsAtIndexPaths:@[[self.tableView indexPathForCell:cell]]
                              withRowAnimation:UITableViewRowAnimationAutomatic];
+    
 }
 
 @end
