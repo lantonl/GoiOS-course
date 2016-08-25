@@ -19,6 +19,8 @@
     NSArray *rawGalleries   = [self loadJSON:@"galleries" withError:&error];
     NSArray *rawExhibitions = [self loadJSON:@"exhibitions" withError:&error];
     NSArray *rawArtwork     = [self loadJSON:@"works" withError:&error];
+    
+    
     if (error) {
         return callback(nil, error);
     }
@@ -26,7 +28,6 @@
     NSMutableDictionary *artworks = [[NSMutableDictionary alloc] initWithCapacity:[rawArtwork count]];
     for (NSDictionary *dic in rawArtwork) {
         Artwork* artwork = [[Artwork alloc] initWithDictionary:dic];
-        //NSLog(@"%@", artwork.imgPicture);
         [artworks setObject:artwork forKey:artwork.ID];
     }
     
@@ -43,13 +44,25 @@
         Exhibition *ex = [[Exhibition alloc] initWithDictionary:dic];
         NSString *galleryId = [[dic[@"_p_gallery"] componentsSeparatedByString:@"$"] lastObject];
         ex.venue = galleries[galleryId];
-        NSLog(@"%@, %@",ex.name, ex.artworks);
+        
+        
+        NSDictionary *artworksDictionary = dic[@"works"];
+        NSMutableArray* tempWorksArray = [[NSMutableArray alloc]init];
+        for (NSDictionary *workDict in artworksDictionary)
+        {
+            [tempWorksArray addObject:artworks[workDict[@"objectId"]]];
+        }
+        ex.artworks = [NSArray arrayWithArray:tempWorksArray];
         [exhibitions addObject:ex];
+//        NSLog(@"Gallery - %@",ex.name);
+//        for (Artwork* obj in ex.artworks) {
+//            NSLog(@"name - %@, id - %@, adress - %@",obj.title, obj.ID, obj.imgPicture);
+//        }
     }
 
-    
     callback(exhibitions, nil);
 }
+
 
 - (NSArray *) loadJSON:(NSString *)json withError:(NSError **)error {
     NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:json ofType:@"json"]];

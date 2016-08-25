@@ -18,7 +18,6 @@
         self.name = data[@"name"];
         self.about = data[@"about"];
         
-        
         if ([data[@"dateStart"] isKindOfClass:[NSString class]]) {
             self.dateStart = [data[@"dateStart"] date];
         }

@@ -10,10 +10,10 @@
 
 @implementation Exhibition
 
+
 - (instancetype) initWithDictionary:(NSDictionary *)data {
     self = [super initWithDictionary:data];
     if (self) {
-        self.artworks = data[@"works"];
         self.authorName = data[@"authorName"];
         self.authorDescription = data[@"authorDescription"];
     }

@@ -7,9 +7,11 @@
 //
 
 #import "Event.h"
+#import "Artwork.h"
 
 @interface Exhibition : Event
 @property (nonatomic, strong) NSString *authorName;
 @property (nonatomic, strong) NSString *authorDescription;
-@property (nonatomic, strong) NSDictionary  *artworks;
+@property (nonatomic, strong) NSArray *artworks;
+
 @end
