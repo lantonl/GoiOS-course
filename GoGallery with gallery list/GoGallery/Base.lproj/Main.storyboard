@@ -72,10 +72,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1K-aU-BBG">
-                                                            <rect key="frame" x="10" y="0.0" width="150" height="40"/>
+                                                            <rect key="frame" x="10" y="0.0" width="250" height="40"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="XD4-dF-v9J"/>
-                                                                <constraint firstAttribute="width" constant="150" id="hl8-EW-s9f"/>
+                                                                <constraint firstAttribute="width" constant="250" id="hl8-EW-s9f"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
